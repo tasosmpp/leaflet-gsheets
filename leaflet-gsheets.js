@@ -59,6 +59,7 @@ map.on("click", function() {
 // These are declared outisde the functions so that the functions can check if they already exist
 var polygonLayer;
 var pointGroupLayer;
+var radious = 500000; //Deikse mono ta marker 500km apo emena
 
 // The form of data must be a JSON representation of a table as returned by Tabletop.js
 // addPolygons first checks if the map layer has already been assigned, and if so, deletes it and makes a fresh one
@@ -156,12 +157,14 @@ function addPoints(data) {
     
        mypos_marker.addTo(pointGroupLayer);
 
-  });
 
   
 
   for (var row = 0; row < data.length; row++) {
     var marker;
+    
+    if( wdistance ( position.coords.latitude,position.coords.longitude, data[row].lat,data[row].lon)>radious)  continue;
+       
     if (markerType == "circleMarker") {
       marker = L.circleMarker([data[row].lat, data[row].lon], {radius: markerRadius});
     } else if (markerType == "circle") {
@@ -205,6 +208,7 @@ function addPoints(data) {
     }
   }
 }
+  });
 
 // Returns different colors depending on the string passed
 // Used for the points layer
@@ -217,4 +221,37 @@ function getColor(type) {
   default:
     return "blue";
   }
+}
+
+function distance(lat1, lon1, lat2, lon2, unit) {
+	if ((lat1 == lat2) && (lon1 == lon2)) {
+		return 0;
+	}
+	else {
+		var radlat1 = Math.PI * lat1/180;
+		var radlat2 = Math.PI * lat2/180;
+		var theta = lon1-lon2;
+		var radtheta = Math.PI * theta/180;
+		var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+		if (dist > 1) {
+			dist = 1;
+		}
+		dist = Math.acos(dist);
+		dist = dist * 180/Math.PI;
+		dist = dist * 60 * 1.1515;
+		if (unit=="K") { dist = dist * 1.609344 }
+		if (unit=="N") { dist = dist * 0.8684 }
+		return dist;
+	}
+}
+
+
+//The sample code is licensed under LGPLv3.
+
+
+//Υπολογισμός απόστασης μεταξύ 2 σημείων (wrapper)
+function wdinstance(latlng1,latlng2)
+{
+    var dis = distance(latlng1.lat,latlng1.lng,latlng2.lat,latlng2.lng,"K");
+    return dis;
 }
