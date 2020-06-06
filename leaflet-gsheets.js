@@ -155,7 +155,7 @@ function addPoints(data) {
     var mypos_marker = L.marker(position.coords.lat,position.coords.lng);
     
    
-  }
+  });
 
   
 
