@@ -152,7 +152,7 @@ function addPoints(data) {
   
   //H thesi mou
   navigator.geolocation.getCurrentPosition(function(position) {
-    var mypos_marker = L.marker(position.coords.latitude,position.coords.longitude);
+    var mypos_marker = L.marker([position.coords.latitude,position.coords.longitude]);
     
        mypos_marker.addTo(pointGroupLayer);
 
