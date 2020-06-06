@@ -59,7 +59,7 @@ map.on("click", function() {
 // These are declared outisde the functions so that the functions can check if they already exist
 var polygonLayer;
 var pointGroupLayer;
-var radious = 500000; //Deikse mono ta marker 500km apo emena
+var radious = 5000000; //Deikse mono ta marker 500km apo emena
 
 // The form of data must be a JSON representation of a table as returned by Tabletop.js
 // addPolygons first checks if the map layer has already been assigned, and if so, deletes it and makes a fresh one
