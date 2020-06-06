@@ -149,6 +149,15 @@ function addPoints(data) {
   // Wil be in pixels for circleMarker, metres for circle
   // Ignore for point
   var markerRadius = 100;
+  
+  //H thesi mou
+  navigator.geolocation.getCurrentPosition(function(position) {
+    var mypos_marker = L.marker(position.coords.lat,position.coords.lng);
+    
+   
+  }
+
+  
 
   for (var row = 0; row < data.length; row++) {
     var marker;
