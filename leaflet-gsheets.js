@@ -207,7 +207,7 @@ function addPoints(data) {
       marker.setIcon(icon);
     }
   }
-}
+
   });
 
 // Returns different colors depending on the string passed
