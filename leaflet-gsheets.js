@@ -251,7 +251,7 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 
 
 //Υπολογισμός απόστασης μεταξύ 2 σημείων (wrapper)
-function wdinstance(latlng1,latlng2)
+function wdistance(latlng1,latlng2)
 {
     var dis = distance(latlng1.lat,latlng1.lng,latlng2.lat,latlng2.lng,"K");
     return dis;
