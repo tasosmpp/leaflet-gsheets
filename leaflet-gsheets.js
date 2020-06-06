@@ -162,8 +162,10 @@ function addPoints(data) {
 
   for (var row = 0; row < data.length; row++) {
     var marker;
-    
-    if( wdistance ( position.coords.latitude,position.coords.longitude, data[row].lat,data[row].lon)>radious)  continue;
+    var dist = wdistance ( position.coords.latitude,position.coords.longitude, data[row].lat,data[row].lon);
+	  console.log(dist);
+    if( dist>radious)  continue;
+	
        
     if (markerType == "circleMarker") {
       marker = L.circleMarker([data[row].lat, data[row].lon], {radius: markerRadius});
