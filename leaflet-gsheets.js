@@ -209,6 +209,7 @@ function addPoints(data) {
   }
 
   });
+}
 
 // Returns different colors depending on the string passed
 // Used for the points layer
